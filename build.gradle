@@ -2,6 +2,8 @@ group 'excel'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
 
 sourceCompatibility = 1.5
 
@@ -11,4 +13,17 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'org.apache.poi', name: 'poi', version: '3.15'
+    compile group: 'org.apache.poi', name: 'poi-ooxml', version: '3.15'
+//    compile group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '2.6.0'
+    compile group: 'org.apache.hadoop', name: 'hadoop-common', version: '2.7.2'
+
 }
+task copyRuntimeLibs(type: Copy) {
+
+    into "lib"
+
+    from configurations.testRuntime
+
+}
+
